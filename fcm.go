@@ -108,9 +108,7 @@ func (this *FcmClient) sendOnce(msg FcmMsg) (*FcmResponseStatus, error) {
 	if err != nil {
 		return fcmRespStatus, err
 	}
-
-	println(string(jsonByte))
-
+	
 	request, err := http.NewRequest("POST", fcmServerUrl, bytes.NewBuffer(jsonByte))
 	request.Header.Set("Authorization", this.apiKeyHeader())
 	request.Header.Set("Content-Type", "application/json")
